@@ -5,25 +5,41 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
-import com.blogspot.atifsoftwares.animatoolib.Animatoo;
+import com.google.firebase.auth.PhoneAuthProvider;
+
+import java.util.concurrent.TimeUnit;
 
 public class PhoneAuth1 extends AppCompatActivity {
 
+    private EditText phoneEditText;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_phone_auth1);
+
+        phoneEditText = findViewById(R.id.phoneEditText);
+
+        findViewById(R.id.requestVerification).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                String phoneNumber = phoneEditText.getText().toString().trim();
+
+                if(phoneNumber.isEmpty() || phoneNumber.length() < 10){
+                    phoneEditText.setError("Enter a valid Phone Number");
+                    phoneEditText.requestFocus();
+                    return;
+                }
+
+                Intent intent = new Intent(PhoneAuth1.this, PhoneAuth2.class);
+                intent.putExtra("phoneNumber", phoneNumber);
+                startActivity(intent);
+            }
+        });
+
     }
 
-    public void openPhoneAuth2(View view) {
-        Intent i=new Intent(this,PhoneAuth2.class);
-        startActivity(i);
-        Animatoo.animateSlideLeft(this);
-    }
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        Animatoo.animateSlideRight(this);
-    }
 }
