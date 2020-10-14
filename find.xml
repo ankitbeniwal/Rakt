@@ -1,7 +1,7 @@
 <application>
   <component name="FindSettings">
-    <option name="customScope" value="Project 'HungerBellsServer'" />
-    <option name="defaultScopeName" value="Project 'HungerBellsServer'" />
-    <option name="SEARCH_SCOPE" value="Project 'HungerBellsServer'" />
+    <option name="customScope" value="Project 'HungerBellShipper'" />
+    <option name="defaultScopeName" value="Project 'HungerBellShipper'" />
+    <option name="SEARCH_SCOPE" value="Project 'HungerBellShipper'" />
   </component>
 </application>
