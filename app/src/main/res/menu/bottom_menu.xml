@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/blood_bankString"
+        android:icon="@drawable/ic_blood_drop"
+        android:id="@+id/bloodBankActivity"/>
+
+    <item android:title="@string/searchString"
+        android:icon="@drawable/ic_search"
+        android:id="@+id/HomeActivity"/>
+
+    <item android:title="@string/settingsString"
+        android:icon="@drawable/ic_settings"
+        android:id="@+id/settingsActivity"/>
+</menu>

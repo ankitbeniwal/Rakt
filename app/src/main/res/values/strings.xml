@@ -10,9 +10,43 @@
     <string name="prefixNumber">+91</string>
     <string name="mobileNumberInput"></string>
     <string name="wave2image">wave2image</string>
+    <string name="google_maps_key">AIzaSyAV_3WegQKYrltCn7euNOY9gjXugyXo4Sg</string>
     <string name="verify">Verify</string>
     <string name="enter_otp_hint">One Time Password</string>
+    <string name="wave3">wave3</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="Name">Name</string>
+    <string name="Email">Email</string>
+    <string name="BloodGroup">Blood Group</string>
+    <string name="Age">Age</string>
+    <string name="Address">Address</string>
+    <string name="WillingToDonateBlood">Willing to Donate Blood?</string>
+    <string name="accountInSettingsString">Account</string>
+    <string name="optionsInSettingsString">Options</string>
+    <string name="edit_profileInSettingsString">Edit Profile</string>
+    <string name="change_phone_numberInSettingsString">Change Phone Number</string>
+    <string name="settingsInSettingsString">Settings</string>
+    <string name="notificationsInSettingsString">Notifications</string>
+    <string name="change_languageInSettingsString">Change Language</string>
+    <string name="moreInSettingsString">More</string>
+    <string name="aboutInSettingsString">About</string>
+    <string name="report_a_bugInSettingsString">Report a Bug</string>
+    <string name="logoutInSettingsString">Logout</string>
+    <string name="searchButtonString">Search</string>
+    <string name="be_a_donorString">Be a Donor</string>
+    <string name="blood_groupString">Blood Group</string>
+    <string name="search_distanceString">Search Distance</string>
+    <string name="blood_bank_activityString">Blood Bank Activity</string>
+    <string name="blood_bankString">Blood Bank</string>
+    <string name="searchString">Search</string>
+    <string name="settingsString">Settings</string>
+    <string name="remove_location_updates">RemoveLocUpdate</string>
+    <string name="launch_activity">LaunchLoc</string>
+    <string name="location_updated">Hello, %1$s! You have new messages.</string>
+    <string name="phone_numberString">+91 XXXXXXXXX</string>
+    <string name="saveString">Save</string>
+    <string name="cancelString">Cancel</string>
+    <string name="donorMessageString">You are not a donor yet ?\nWilling to donate blood ? \nEdit your profile...</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Phone Auth1</string>
 
 </resources>

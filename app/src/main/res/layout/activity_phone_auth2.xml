@@ -11,7 +11,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="260dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -21,31 +21,30 @@
 
         <ImageView
             android:id="@+id/logoImageView"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:contentDescription="@string/logo_image"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@mipmap/logo_image_foreground" />
+            android:scaleType="center"
+            app:srcCompat="@drawable/ic_drop" />
 
         <TextView
             android:id="@+id/logoNameTextView"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/righteous"
             android:gravity="center"
             android:text="@string/rakt_logo"
             android:textColor="#3A1A1A"
-            android:textSize="40sp"
+            android:textSize="50sp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/logoImageView"
-            app:layout_constraintVertical_bias="0.629"
-            tools:layout_editor_absoluteX="0dp" />
-
-
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/logoImageView"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <FrameLayout
@@ -61,30 +60,29 @@
 
         <TextView
             android:id="@+id/prefix"
-            android:layout_width="54dp"
-            android:layout_height="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:fontFamily="@font/roboto"
+            android:layout_gravity="center_vertical"
             android:gravity="center"
+            android:layout_marginStart="10dp"
             android:text="@string/prefixNumber"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <EditText
+        <TextView
             android:id="@+id/phoneEditText"
-            android:layout_width="290dp"
-            android:layout_height="55dp"
-            android:layout_marginStart="55dp"
-            android:autofillHints=""
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:layout_gravity="center_vertical"
             android:background="@null"
-            android:ems="10"
-            android:fontFamily="@font/roboto"
-            android:hint="@string/mobile_number_hint"
-            android:inputType="none"
-            android:maxLength="10"
-            android:text="@string/mobileNumberInput"
-            android:textColor="#000000"
             android:textSize="18sp"
-            tools:ignore="TextFields" />
+            android:fontFamily="@font/roboto"
+            android:text="@string/mobileNumberInput"
+            android:textColor="#000000" />
 
     </FrameLayout>
 
@@ -95,18 +93,20 @@
         android:layout_marginStart="30dp"
         android:layout_marginEnd="30dp"
         android:background="@drawable/custom_edit_text"
-        app:layout_constraintBottom_toBottomOf="@+id/wave2ImageView"
+        app:layout_constraintBottom_toBottomOf="@+id/wave3ImageView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.6">
 
-
         <EditText
             android:id="@+id/otpEditText"
-            android:layout_width="290dp"
-            android:layout_height="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginStart="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="15dp"
             android:autofillHints=""
             android:background="@null"
             android:ems="10"
@@ -121,22 +121,20 @@
         <Button
             android:id="@+id/resendOtp"
             android:layout_width="wrap_content"
-            android:layout_height="44dp"
-            android:layout_marginStart="300dp"
-            android:layout_marginTop="4dp"
-            android:layout_marginEnd="4dp"
-            android:background="@mipmap/resend_image_round"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical|end"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/resend_image_foreground"
             android:fontFamily="@font/righteous" />
-
     </FrameLayout>
 
 
     <Button
         android:id="@+id/verify"
-        android:layout_width="150dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:background="@drawable/get_started_button_design"
+        android:background="@drawable/button_background_design"
         android:fontFamily="@font/roboto"
         android:text="@string/verify"
         android:textColor="#FFFFFF"
@@ -149,25 +147,24 @@
         app:layout_constraintVertical_bias="0.71000004" />
 
     <ImageView
-        android:id="@+id/wave2ImageView"
+        android:id="@+id/wave3ImageView"
         android:layout_width="match_parent"
-        android:layout_height="245dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
         android:contentDescription="@string/wave2image"
-        android:scaleType="fitEnd"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0"
-        app:srcCompat="@drawable/wave2" />
+        app:srcCompat="@drawable/ic_wave3" />
 
     <Button
         android:id="@+id/back"
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:background="@mipmap/back_button_logo_round"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:gravity="center"
+        android:background="@drawable/back_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.079"
