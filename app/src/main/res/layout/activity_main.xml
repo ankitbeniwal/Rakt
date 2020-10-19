@@ -54,15 +54,16 @@
         android:layout_gravity="center"
         android:background="@drawable/button_background_design"
         android:fontFamily="@font/righteous"
-        android:onClick="openPhoneAuth1"
         android:text="@string/getstartedButton"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:onClick="openPhoneAuth1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.59000003" />
+
 
     <ImageView
         android:id="@+id/wave1ImageView"

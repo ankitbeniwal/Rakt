@@ -18,8 +18,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.rakt.Database.Common;
 import com.rakt.Database.CurrentUser;
 
-import java.util.Currency;
-
 public class MainActivity extends AppCompatActivity {
     CurrentUser user;
     DatabaseReference db;
