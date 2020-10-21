@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -19,14 +20,26 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthProvider;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.rakt.Database.Common;
+import com.rakt.Database.CurrentUser;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 public class PhoneAuth2 extends AppCompatActivity {
 
     private String mVerificationId;
+    private PhoneAuthProvider.ForceResendingToken mResendToken;
     private EditText otpEditText;
     private FirebaseAuth mAuth;
+    DatabaseReference db;
+    CurrentUser user;
+    private String phoneNumber;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +50,9 @@ public class PhoneAuth2 extends AppCompatActivity {
         otpEditText = findViewById(R.id.otpEditText);
 
         Intent intent = getIntent();
-        String phoneNumber = intent.getStringExtra("phoneNumber");
+        phoneNumber = intent.getStringExtra("phoneNumber");
 
-        ((EditText)findViewById(R.id.phoneEditText)).setText(phoneNumber);
+        ((TextView)findViewById(R.id.phoneEditText)).setText(phoneNumber);
         sendVerificationCode(phoneNumber);
 
         findViewById(R.id.verify).setOnClickListener(new View.OnClickListener() {
@@ -57,6 +70,13 @@ public class PhoneAuth2 extends AppCompatActivity {
             }
         });
 
+        findViewById(R.id.resendOtp).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                resendVerificationCode(phoneNumber, mResendToken);
+            }
+        });
+
         findViewById(R.id.back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,9 +86,6 @@ public class PhoneAuth2 extends AppCompatActivity {
         });
     }
 
-    //the method is sending verification code
-    //the country id is concatenated
-    //you can take the country id as user input as well
     private void sendVerificationCode(String phoneNumber) {
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
                 "+91" + phoneNumber,
@@ -76,6 +93,17 @@ public class PhoneAuth2 extends AppCompatActivity {
                 TimeUnit.SECONDS,
                 TaskExecutors.MAIN_THREAD,
                 mCallbacks);
+    }
+
+    private void resendVerificationCode(String phoneNumber,
+                                        PhoneAuthProvider.ForceResendingToken forceResendingToken) {
+        PhoneAuthProvider.getInstance().verifyPhoneNumber(
+                "+91" + phoneNumber,
+                60,
+                TimeUnit.SECONDS,
+                this,
+                mCallbacks,
+                forceResendingToken);
     }
 
     //the callback to detect the verification status
@@ -107,6 +135,7 @@ public class PhoneAuth2 extends AppCompatActivity {
 
             //storing the verification id that is sent to the user
             mVerificationId = s;
+            mResendToken = forceResendingToken;
         }
     };
 
@@ -126,14 +155,31 @@ public class PhoneAuth2 extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             //verification successful we will start the profile activity
-                            Intent intent = new Intent(PhoneAuth2.this, MainActivity.class);    //Todo : Update Class name
+                            db=FirebaseDatabase.getInstance().getReference(Common.USER_REF);
+                            db.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    if(snapshot.child(Objects.requireNonNull(mAuth.getUid())).exists()){
+                                        user=snapshot.child(mAuth.getUid()).getValue(CurrentUser.class);
+                                    }else{
+                                        user=new CurrentUser(mAuth.getUid(),phoneNumber,"NA","NA","NA","NA","NA","false");
+                                        db.child(mAuth.getUid()).setValue(user);
+                                    }
+                                    Common.currentUser=user;
+                                }
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+                                    Toast.makeText(getApplicationContext(),""+error.getMessage(),Toast.LENGTH_SHORT).show();
+                                }
+                            });
+
+                            Intent intent = new Intent(PhoneAuth2.this, HomeActivity.class);
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                             startActivity(intent);
 
                         } else {
 
                             //verification unsuccessful.. display an error message
-
                             String message = "Something is wrong, we will fix it soon...";
 
                             if (task.getException() instanceof FirebaseAuthInvalidCredentialsException) {
