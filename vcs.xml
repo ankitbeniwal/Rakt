@@ -26,6 +26,10 @@
           <option name="url" value="http://gitlab.com" />
           <option name="userName" value="ramdeep.siwach@findfilo.com" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/androidmads/AndroidOCRSample.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="$USER_HOME$/AndroidStudioProjects" />
