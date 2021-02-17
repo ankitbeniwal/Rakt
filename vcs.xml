@@ -42,6 +42,10 @@
           <option name="url" value="https://gitlab.com/risertcl/filo-tutor-flutter.git" />
           <option name="userName" value="" />
         </UrlAndUserName>
+        <UrlAndUserName>
+          <option name="url" value="https://github.com/AgoraIO-Community/Agora-Flutter-Quickstart.git" />
+          <option name="userName" value="" />
+        </UrlAndUserName>
       </list>
     </option>
     <option name="cloneParentDir" value="$USER_HOME$/AndroidStudioProjects" />
