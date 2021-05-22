@@ -3,6 +3,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/layout/fragment_otp.xml" value="0.11322463768115942" />
+        <entry key="common-ui/src/main/res/layout/layout_material_dialog.xml" value="0.14375" />
       </map>
     </option>
   </component>
